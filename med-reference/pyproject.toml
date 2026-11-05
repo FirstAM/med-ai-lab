@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "med-reference"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]"
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "mypy",
+    "ruff"
+]
+
+[tool.fastapi]
+entrypoint = "med_reference.main:app"
