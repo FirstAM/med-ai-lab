@@ -1,5 +1,8 @@
+import httpx2
 from fastapi import HTTPException
 from fastapi import APIRouter
+from httpx2 import Request, HTTPError
+from starlette.responses import JSONResponse
 
 from med_reference import ols
 from med_reference.schemas import Condition
@@ -7,11 +10,8 @@ from med_reference.schemas import SearchRequest
 
 router = APIRouter(prefix="/conditions")
 
-CONDITIONS = {}
-
-
 @router.get("/{code}")
-async def get_condition(code) -> Condition:
+async def get_condition(code: str) -> Condition:
     condition = await ols.get_by_code(code)
     if condition is None:
         raise HTTPException(status_code=404, detail="Condition not found", )
