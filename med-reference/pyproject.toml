@@ -20,3 +20,6 @@ dev = [
 
 [tool.fastapi]
 entrypoint = "med_reference.main:app"
+
+[tool.mypy]
+strict = true
