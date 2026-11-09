@@ -1,12 +1,7 @@
-import httpx2
-from fastapi import HTTPException
-from fastapi import APIRouter
-from httpx2 import Request, HTTPError
-from starlette.responses import JSONResponse
+from fastapi import APIRouter, HTTPException
 
 from med_reference import ols
-from med_reference.schemas import Condition
-from med_reference.schemas import SearchRequest
+from med_reference.schemas import Condition, SearchRequest
 
 router = APIRouter(prefix="/conditions")
 

@@ -1,4 +1,5 @@
 import httpx2
+
 from med_reference.schemas import Condition
 
 EBI_URL="https://www.ebi.ac.uk/ols4/api/search"

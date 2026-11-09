@@ -1,14 +1,9 @@
-from typing import Any
-from unittest import case
 
 import httpx2
-from fastapi import FastAPI, HTTPException
-from fastapi import Request
-from pydantic import BaseModel, Field
+from fastapi import FastAPI, Request
 from starlette.responses import JSONResponse
 
 from med_reference import routers
-from med_reference.ols import EBI_URL
 
 app = FastAPI()
 app.include_router(routers.router)
@@ -21,7 +16,7 @@ async def health():
 async def condition_exception_handler(request: Request, exc: httpx2.HTTPError):
     return JSONResponse(
         status_code=502,
-        content={"message": "OLS unavailable", "detail": f"{exc.__cause__}"},
+        content={"detail": f"OLS unavailable {exc}", },
     )
 
 
