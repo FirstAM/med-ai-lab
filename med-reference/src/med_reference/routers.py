@@ -5,11 +5,15 @@ from med_reference.schemas import Condition, SearchRequest
 
 router = APIRouter(prefix="/conditions")
 
+
 @router.get("/{code}")
 async def get_condition(code: str) -> Condition:
     condition = await ols.get_by_code(code)
     if condition is None:
-        raise HTTPException(status_code=404, detail="Condition not found", )
+        raise HTTPException(
+            status_code=404,
+            detail="Condition not found",
+        )
     else:
         return condition
 
