@@ -9,12 +9,14 @@ app.include_router(routers.router)
 
 
 @app.get("/health")
-async def health():
+async def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
 @app.exception_handler(httpx2.HTTPError)
-async def condition_exception_handler(request: Request, exc: httpx2.HTTPError):
+async def condition_exception_handler(
+    request: Request, exc: httpx2.HTTPError
+) -> JSONResponse:
     return JSONResponse(
         status_code=502,
         content={
