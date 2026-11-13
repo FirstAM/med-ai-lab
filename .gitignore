@@ -5,3 +5,4 @@ med-reference/bench.py
 med-reference/.coverage
 **htmlcov
 **build
+med-rag/data/
