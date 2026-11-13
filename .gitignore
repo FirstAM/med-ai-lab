@@ -6,3 +6,4 @@ med-reference/.coverage
 **htmlcov
 **build
 med-rag/data/
+**.DS_Store
